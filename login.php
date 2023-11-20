@@ -27,13 +27,13 @@ session_start();
 				</div>
 
 				<?php
-					//checking if the session 'error' is set. Erro session is the message if the 'Username' and 'Password' is not valid.
+					// Verifica se o login retorna erro
 					if(ISSET($_SESSION['error'])){
 				?>
-				<!-- Display Login Error message -->
+				<!-- Mensagem de erro -->
 					<div class="alert alert-danger"><?php echo $_SESSION['error']?></div>
 				<?php
-					//Unsetting the 'error' session after displaying the message. 
+					// Tirando a mensagem de erro após o login 
 					unset($_SESSION['error']);
 					}
 				?>

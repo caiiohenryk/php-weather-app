@@ -1,27 +1,27 @@
 <?php
-	//starting the session
+	// Startando a sessão
 	session_start();
  
-	//including the database connection
+	// Puxando a conexão da DB
 	require_once 'conn.php';
  
 	if(ISSET($_POST['register'])){
-		// Setting variables
+// Setando as variáveis do registro
 		$username = $_POST['username'];
 		$senha = $_POST['senha'];
  
-		// Insertion Query
+		// Salvando o objeto na DB
 		$query = "INSERT INTO `usuario` (username, senha) VALUES(:username, :senha)";
 		$stmt = $conn->prepare($query);
 		$stmt->bindParam(':username', $username);
 		$stmt->bindParam(':senha', $senha);
  
-		// Check if the execution of query is success
+		// Checando a operação do DB
 		if($stmt->execute()){
-			//setting a 'success' session to save our insertion success message.
+			// Mensagem de conta criada
 			$_SESSION['success'] = "Successfully created an account";
  
-			//redirecting to the index.php 
+			// Redirecionando 
 			header('location: index.php');
 		}
  

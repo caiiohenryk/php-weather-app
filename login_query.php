@@ -1,15 +1,14 @@
 <?php
-	//starting the session
+	// Startando a sessão
 	session_start();
-	//including the database connection
 	require_once 'conn.php';
  
 	if(ISSET($_POST['login'])){
-		// Setting variables
+		// Setando variáveis
 		$username = $_POST['username'];
 		$senha = $_POST['senha'];
  
-		// Select Query for counting the row that has the same value of the given username and password. This query is for checking if the access is valid or not.
+		// Validando username e senha
 		$query = "SELECT COUNT(*) as count FROM `usuario` WHERE `username` = :username AND `senha` = :senha";
 		$stmt = $conn->prepare($query);
 		$stmt->bindParam(':username', $username);
